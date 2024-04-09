@@ -23,7 +23,7 @@ export class SwiftchatMessageService extends MessageService {
     };
   }
   
-  
+
 
   async sendWelcomeMessage(from: string, language: string) {
     const localisedStrings = LocalizationService.getLocalisedString(language);
@@ -43,6 +43,8 @@ export class SwiftchatMessageService extends MessageService {
     console.log(response)
     return response;
   }
+
+  
   async sendAboutCelebrityMessage(from: string, language: string) {
     const localisedStrings = LocalizationService.getLocalisedString(language);
    console.log(localisedStrings.about_celebrity)

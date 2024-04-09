@@ -28,58 +28,58 @@ export class ChatbotService {
     try {
       const { from, text, button_response, persistent_menu_response } = body;
       console.log(button_response)
-      //console.log("message",body)
+      
       let botID = process.env.BOT_ID;
       let UserData = await this.userService.findUserByMobileNumber(from);
-      //console.log("Messages",UserData);
+      
 
       if (!(UserData)){
         await this.userService.createUser(from,botID);
-       // console.log("one")
+       
       }
       const userData = await this.userService.findUserByMobileNumber(from);
       const localisedStrings = await LocalizationService.getLocalisedString(
         userData.language,
       );
-      //console.log(userData)
+      
       console.log(localisedStrings.category_list)
       
 
       if (!persistent_menu_response && !(button_response) && localisedStrings.greetings.includes(text.body.toLowerCase())) {
         this.message.sendWelcomeMessage(from, userData.language);
-       // console.log("hello")
+       
         this.message.buttonoptions(from,userData.language);
-       // console.log("buttons")
+       
       } else if (button_response && (localisedStrings.category_list.includes(button_response.body))) {
 
-        console.log("helloo")
+       
         switch(button_response.body) {
           case 'About the Celebrity':
-            console.log("1")
+            
             
             this.message.sendAboutCelebrityMessage(from, userData.language);
             this.message.goBackToMainMenu(from, userData.language);
             break;
           case 'Latest News and Projects':
-            console.log("2")
+            
             
             this.message.sendLatestNewsMessage(from, userData.language);
             this.message.Followupbuttons(from, userData.language);
             break;
           case 'Social Media Links':
-            console.log("3")
+            
             
             this.message.sendSocialmediaMessage(from, userData.language);
             this.message.goBackToMainMenu(from, userData.language);
             break;
           case 'Ask a question':
-            console.log("4")
+            
            
             this.message.sendAskQuestionMessage(from, userData.language);
             this.message.Followupbuttons(from, userData.language);
             break;
           case 'Report a Problem':
-            console.log("5")
+          
             
             this.message.sendReportProblemMessage(from, userData.language);
             this.message.goBackToMainMenu(from, userData.language);
@@ -92,11 +92,8 @@ export class ChatbotService {
         button_response &&
         localisedStrings.languageButtons.includes(button_response.body)
       ) {
-        console.log("Yes");
         await this.userService.saveLanguage(from, botID, button_response.body);
-        console.log("Done");
         await this.message.buttonoptions(from, button_response.body);
-        console.log("Buttons saved")
       }
       
       else if (
