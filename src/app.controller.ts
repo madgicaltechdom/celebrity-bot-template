@@ -1,4 +1,4 @@
-import ChatbotService from './chat/chatbot.service';
+import {ChatbotService} from './chat/chatbot.service';
 import { Body, Controller, Get, Post, Res } from '@nestjs/common';
 import { log } from './common/middleware/logger.help';
 import { Response } from 'express';

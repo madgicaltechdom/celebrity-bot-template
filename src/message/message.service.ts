@@ -27,5 +27,15 @@ export abstract class MessageService {
   }
 
   abstract sendWelcomeMessage(from: string, language: string);
+  abstract sendAboutCelebrityMessage(from: string, language: string);
+  abstract sendLatestNewsMessage(from: string, language: string);
+  abstract sendSocialmediaMessage(from: string, language: string);
+  abstract sendAskQuestionMessage(from: string, language: string);
+  abstract sendReportProblemMessage(from: string, language: string);
   abstract sendLanguageChangedMessage(from: string, language: string);
+  abstract buttonoptions(from:string, language:string);
+  abstract goBackToMainMenu(from: string, language: string);
+  abstract languageButtons(from: string, language: string);
+  abstract Followupbuttons(from: string, language: string);
+  
 }
