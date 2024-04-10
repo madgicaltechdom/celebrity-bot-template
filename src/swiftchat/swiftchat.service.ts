@@ -27,7 +27,7 @@ export class SwiftchatMessageService extends MessageService {
 
   async sendWelcomeMessage(from: string, language: string) {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-   console.log(localisedStrings.welcomeMessage)
+  
     const requestData = this.prepareRequestData(
       from,
       localisedStrings.welcomeMessage,
@@ -47,7 +47,7 @@ export class SwiftchatMessageService extends MessageService {
   
   async sendAboutCelebrityMessage(from: string, language: string) {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-   console.log(localisedStrings.about_celebrity)
+   
     const requestData = this.prepareRequestData(
       from,
       localisedStrings.about_celebrity,
@@ -65,7 +65,7 @@ export class SwiftchatMessageService extends MessageService {
   }
   async sendLatestNewsMessage(from: string, language: string) {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-   console.log(localisedStrings.latest_news)
+   
     const requestData = this.prepareRequestData(
       from,
       localisedStrings.latest_news,
@@ -83,7 +83,7 @@ export class SwiftchatMessageService extends MessageService {
   }
   async sendSocialmediaMessage(from: string, language: string) {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-   console.log(localisedStrings.social_media)
+   
     const requestData = this.prepareRequestData(
       from,
       localisedStrings.social_media,
@@ -102,7 +102,7 @@ export class SwiftchatMessageService extends MessageService {
 
   async sendAskQuestionMessage(from: string, language: string) {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-   console.log(localisedStrings.ask_a_questin)
+   
     const requestData = this.prepareRequestData(
       from,
       localisedStrings.ask_a_question,
@@ -120,7 +120,7 @@ export class SwiftchatMessageService extends MessageService {
   }
   async sendReportProblemMessage(from: string, language: string) {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-   console.log(localisedStrings.report_problem)
+   
     const requestData = this.prepareRequestData(
       from,
       localisedStrings.report_problem,
@@ -281,5 +281,6 @@ export class SwiftchatMessageService extends MessageService {
       console.error('errors:', error);
     }
   };
+  
     
 }

@@ -60,6 +60,7 @@ export class UserService {
   async saveLanguage(mobileNumber: string, botID: string,language:string): Promise<User> {
     const existingUser = await this.findUserByMobileNumber(mobileNumber);
     if (existingUser) {
+      console.log("language recieved", language)
       existingUser.language = language;
       return this.userRepository.save(existingUser);
     } else {

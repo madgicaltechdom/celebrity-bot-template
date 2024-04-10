@@ -11,6 +11,7 @@ export class ChatbotService {
   private readonly intentClassifier: IntentClassifier;
   private readonly message: MessageService;
   private readonly userService: UserService;
+  private readonly botId=process.env.Bot_id;
 
   constructor(
     intentClassifier: IntentClassifier,
@@ -25,20 +26,22 @@ export class ChatbotService {
   public async processMessage(body: any): Promise<any> {
     try {
       const { from, text, button_response, persistent_menu_response } = body;
-      console.log(button_response);
+      
 
       let botID = process.env.BOT_ID;
       let UserData = await this.userService.findUserByMobileNumber(from);
+      console.log("Userdata", UserData)
 
       if (!UserData) {
+        console.log("hello")
         await this.userService.createUser(from, botID);
       }
       const userData = await this.userService.findUserByMobileNumber(from);
+      console.log("New user data",userData)
       const localisedStrings = await LocalizationService.getLocalisedString(
         userData.language,
       );
 
-      console.log(localisedStrings.category_list);
 
       if (
         !persistent_menu_response &&
@@ -50,29 +53,24 @@ export class ChatbotService {
         this.message.buttonoptions(from, userData.language);
       } else if (
         button_response &&
-        localisedStrings.category_list.includes(button_response.body)
-      ) {
-        switch (button_response.body) {
-          case 'About the Celebrity':
-            this.message.sendAboutCelebrityMessage(from, userData.language);
+        localisedStrings.category_list.includes(button_response.body)) {
+        if(button_response.body=== localisedStrings.category_list[0]){
+          this.message.sendAboutCelebrityMessage(from, userData.language);
             this.message.goBackToMainMenu(from, userData.language);
-            break;
-          case 'Latest News and Projects':
-            this.message.sendLatestNewsMessage(from, userData.language);
+        } else if(button_response.body=== localisedStrings.category_list[1]){
+          this.message.sendLatestNewsMessage(from, userData.language);
             this.message.Followupbuttons(from, userData.language);
-            break;
-          case 'Social Media Links':
-            this.message.sendSocialmediaMessage(from, userData.language);
-            this.message.goBackToMainMenu(from, userData.language);
-            break;
-          case 'Ask a question':
-            this.message.sendAskQuestionMessage(from, userData.language);
+        }
+        else if(button_response.body=== localisedStrings.category_list[2]){
+          this.message.sendSocialmediaMessage(from, userData.language);
+          this.message.goBackToMainMenu(from, userData.language);
+        } else if(button_response.body === localisedStrings.category_list[3]){
+          this.message.sendAskQuestionMessage(from, userData.language);
+
             this.message.Followupbuttons(from, userData.language);
-            break;
-          case 'Report a Problem':
-            this.message.sendReportProblemMessage(from, userData.language);
+        } else if(button_response.body === localisedStrings.category_list[4]){
+          this.message.sendReportProblemMessage(from, userData.language);
             this.message.goBackToMainMenu(from, userData.language);
-            break;
         }
       } else if (persistent_menu_response) {
         await this.message.languageButtons(from, userData.language);
@@ -80,9 +78,11 @@ export class ChatbotService {
         button_response &&
         localisedStrings.languageButtons.includes(button_response.body)
       ) {
-        await this.userService.saveLanguage(from, botID, button_response.body);
-        await this.message.buttonoptions(from, button_response.body);
-      } else if (
+        let language= await this.userService.saveLanguage(from, botID, button_response.body);
+        console.log("language changed:",language)
+        await this.message.buttonoptions(from, language.language);
+      } 
+      else if (
         button_response &&
         localisedStrings.back_to_main_menu.includes(button_response.body)
       ) {
@@ -91,7 +91,7 @@ export class ChatbotService {
         button_response &&
         localisedStrings.morebuttons.includes(button_response.body)
       ) {
-        console.log('followup');
+        
         if (button_response.body === localisedStrings.morebuttons[0]) {
           this.message.buttonoptions(from, userData.language);
         } else if (button_response.body === localisedStrings.morebuttons[1]) {

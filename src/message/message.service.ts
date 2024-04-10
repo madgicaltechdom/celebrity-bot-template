@@ -38,4 +38,5 @@ export abstract class MessageService {
   abstract languageButtons(from: string, language: string);
   abstract Followupbuttons(from: string, language: string);
   
+  
 }
