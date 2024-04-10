@@ -37,6 +37,6 @@ export abstract class MessageService {
   abstract goBackToMainMenu(from: string, language: string);
   abstract languageButtons(from: string, language: string);
   abstract Followupbuttons(from: string, language: string);
-  
+  abstract sendAnswer(from: string, language: string);
   
 }

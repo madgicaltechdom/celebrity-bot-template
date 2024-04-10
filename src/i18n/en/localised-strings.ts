@@ -1,5 +1,5 @@
 export const localisedStrings = {
-  welcomeMessage: 'Hi Welcome to the Celebrity ChatBot',
+  welcomeMessage: 'Hi Welcome to the Jennifer Lopez ChatBot',
   seeMoreMessage: 'See More Data',
   language_hindi: 'हिन्दी',
   language_english: 'English',
@@ -37,10 +37,12 @@ export const localisedStrings = {
   ],
   greetings:['hi','hello','hey','hola','namastey'],
   category_list: ['About the Celebrity', 'Latest News and Projects', 'Social Media Links','Ask a question','Report a Problem'],
-  about_celebrity:' [Insert brief description or bio of the celebrity here]',
-  latest_news:'[Project/News Title 1]: [Brief description or headline]',
-  social_media:'Connect with [Celebrity] on social media platforms for more updates and behind-the-scenes content',
-  ask_a_question:'Have a question about [Celebrity]?Ask away.',
+  about_celebrity:'Jennifer Lopez, also known by her nickname J.Lo, is an American singer, actress, dancer, and producer. She is one of the most influential Latin artists in the entertainment industry. Lopez gained her first high-profile job as a Fly Girl dancer on the television comedy program In Living Color in 1991.',
+  latest_news:'Jennifer Lopez to Star in New Romantic Comedy Film: Jennifer Lopez has announced that she will star in a new romantic comedy film titled Love in the City. The film is set to begin production later this year and will feature Lopez in the lead role alongside an ensemble cast.',
+  social_media:'instagram- https://www.instagram.com/jlo/',
+  ask_a_question:'Have a question about Jennifer Lopez?Ask away.',
+  Questions:'What inspired you to pursue a career in entertainment?',
+  Answers:'Jennifer Lopez was inspired to pursue a career in entertainment from a young age.',
   report_problem:'Encountering any issues? Let us know by filling out the form',
   back_to_main_menu:['Go Back to Main Mneu'],
   go_back_to_main_menu: [

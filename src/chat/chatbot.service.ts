@@ -48,30 +48,38 @@ export class ChatbotService {
         !button_response &&
         localisedStrings.greetings.includes(text.body.toLowerCase())
       ) {
-        this.message.sendWelcomeMessage(from, userData.language);
+        await this.message.sendWelcomeMessage(from, userData.language);
 
-        this.message.buttonoptions(from, userData.language);
+        await this.message.buttonoptions(from, userData.language);
       } else if (
         button_response &&
         localisedStrings.category_list.includes(button_response.body)) {
         if(button_response.body=== localisedStrings.category_list[0]){
-          this.message.sendAboutCelebrityMessage(from, userData.language);
-            this.message.goBackToMainMenu(from, userData.language);
+          await this.message.sendAboutCelebrityMessage(from, userData.language);
+            await this.message.goBackToMainMenu(from, userData.language);
         } else if(button_response.body=== localisedStrings.category_list[1]){
-          this.message.sendLatestNewsMessage(from, userData.language);
-            this.message.Followupbuttons(from, userData.language);
+          await this.message.sendLatestNewsMessage(from, userData.language);
+            await this.message.Followupbuttons(from, userData.language);
         }
         else if(button_response.body=== localisedStrings.category_list[2]){
-          this.message.sendSocialmediaMessage(from, userData.language);
-          this.message.goBackToMainMenu(from, userData.language);
+          await this.message.sendSocialmediaMessage(from, userData.language);
+          await this.message.goBackToMainMenu(from, userData.language);
         } else if(button_response.body === localisedStrings.category_list[3]){
-          this.message.sendAskQuestionMessage(from, userData.language);
+          await this.message.sendAskQuestionMessage(from, userData.language);
+          await this.userService.saveButtonResponse(from,this.botId,localisedStrings.category_list[3])
 
-            this.message.Followupbuttons(from, userData.language);
         } else if(button_response.body === localisedStrings.category_list[4]){
-          this.message.sendReportProblemMessage(from, userData.language);
-            this.message.goBackToMainMenu(from, userData.language);
+          await this.message.sendReportProblemMessage(from, userData.language);
+            await this.message.goBackToMainMenu(from, userData.language);
         }
+      } 
+
+      else if(!persistent_menu_response && !button_response && userData.buttonResponse===localisedStrings.category_list[3]){
+        await this.userService.updateUsercontext(from,userData.language, body.text.body);
+        if(localisedStrings.Questions === body.text.body){
+          await this.message.sendAnswer(from, userData.language);
+        }
+        await this.message.Followupbuttons(from, userData.language);
       } else if (persistent_menu_response) {
         await this.message.languageButtons(from, userData.language);
       } else if (
@@ -86,14 +94,14 @@ export class ChatbotService {
         button_response &&
         localisedStrings.back_to_main_menu.includes(button_response.body)
       ) {
-        this.message.buttonoptions(from, userData.language);
+        await this.message.buttonoptions(from, userData.language);
       } else if (
         button_response &&
         localisedStrings.morebuttons.includes(button_response.body)
       ) {
         
         if (button_response.body === localisedStrings.morebuttons[0]) {
-          this.message.buttonoptions(from, userData.language);
+          await this.message.buttonoptions(from, userData.language);
         } else if (button_response.body === localisedStrings.morebuttons[1]) {
           await this.message.sendAskQuestionMessage(from, userData.language);
         }
