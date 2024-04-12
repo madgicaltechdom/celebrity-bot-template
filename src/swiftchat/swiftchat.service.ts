@@ -294,6 +294,8 @@ export class SwiftchatMessageService extends MessageService {
       console.error('errors:', error);
     }
   };
+
+  
   
 
     
