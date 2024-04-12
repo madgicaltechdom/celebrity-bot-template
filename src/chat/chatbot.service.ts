@@ -30,14 +30,12 @@ export class ChatbotService {
 
       let botID = process.env.BOT_ID;
       let UserData = await this.userService.findUserByMobileNumber(from);
-      console.log("Userdata", UserData)
+      
 
       if (!UserData) {
-        console.log("hello")
         await this.userService.createUser(from, botID);
       }
       const userData = await this.userService.findUserByMobileNumber(from);
-      console.log("New user data",userData)
       const localisedStrings = await LocalizationService.getLocalisedString(
         userData.language,
       );
@@ -91,7 +89,6 @@ export class ChatbotService {
         localisedStrings.languageButtons.includes(button_response.body)
       ) {
         let language= await this.userService.saveLanguage(from, botID, button_response.body);
-        console.log("language changed:",language)
         await this.message.buttonoptions(from, language.language);
       } 
       else if (
@@ -119,7 +116,6 @@ export class ChatbotService {
       return 'ok';
     } catch (error) {
       console.error('Error processing message:', error);
-      throw error;
     }
   }
 }

@@ -1,10 +1,11 @@
 export const localisedStrings = {
   welcomeMessage: 'Hi Welcome to the Jennifer Lopez ChatBot',
+  button_option_body: 'What would you like to chat about today?',
+
   seeMoreMessage: 'See More Data',
   language_hindi: 'हिन्दी',
   language_english: 'English',
   language_changed: 'Language changed to English',
-  button_option_body: 'What would you like to chat about today?',
   languageBody: 'Please select a language',
   languageButtons: ['Hindi','English'],
   button_options:[
@@ -52,7 +53,6 @@ export const localisedStrings = {
       reply: 'Go Back To Main Menu',
     }
   ],
-  
   backMainMenuMessage: `Click the button to return to the main menu `,
   backMainewAskMessage: 'Click the button to return to the main menu or ask a new question',
   morebuttons:['Go Back To Main Menu','Ask a new Question'],
@@ -68,4 +68,5 @@ export const localisedStrings = {
       reply: 'Ask a new Question',
     }
   ]
+  
 };
