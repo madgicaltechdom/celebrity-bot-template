@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import IntentClassifier from '../intent/intent.classifier';
-import { MessageService } from 'src/message/message.service';
-import { UserService } from 'src/model/user.service';
+import { MessageService } from '../message/message.service';
+import { UserService } from '../model/user.service';
 
 import { LocalizationService } from '../localization/localization.service';
 import { localisedStrings } from 'src/i18n/en/localised-strings';
@@ -57,13 +57,16 @@ export class ChatbotService {
         if(button_response.body=== localisedStrings.category_list[0]){
           await this.message.sendAboutCelebrityMessage(from, userData.language);
             await this.message.goBackToMainMenu(from, userData.language);
+            await this.userService.saveButtonResponse(from,this.botId,localisedStrings.category_list[0])
         } else if(button_response.body=== localisedStrings.category_list[1]){
           await this.message.sendLatestNewsMessage(from, userData.language);
             await this.message.Followupbuttons(from, userData.language);
+            await this.userService.saveButtonResponse(from,this.botId,localisedStrings.category_list[1])
         }
         else if(button_response.body=== localisedStrings.category_list[2]){
           await this.message.sendSocialmediaMessage(from, userData.language);
           await this.message.goBackToMainMenu(from, userData.language);
+          await this.userService.saveButtonResponse(from,this.botId,localisedStrings.category_list[2])
         } else if(button_response.body === localisedStrings.category_list[3]){
           await this.message.sendAskQuestionMessage(from, userData.language);
           await this.userService.saveButtonResponse(from,this.botId,localisedStrings.category_list[3])
@@ -71,6 +74,7 @@ export class ChatbotService {
         } else if(button_response.body === localisedStrings.category_list[4]){
           await this.message.sendReportProblemMessage(from, userData.language);
             await this.message.goBackToMainMenu(from, userData.language);
+            await this.userService.saveButtonResponse(from,this.botId,localisedStrings.category_list[4])
         }
       } 
 
@@ -95,6 +99,7 @@ export class ChatbotService {
         localisedStrings.back_to_main_menu.includes(button_response.body)
       ) {
         await this.message.buttonoptions(from, userData.language);
+        await this.userService.saveButtonResponse(from,this.botId,localisedStrings.back_to_main_menu);
       } else if (
         button_response &&
         localisedStrings.morebuttons.includes(button_response.body)
@@ -102,8 +107,10 @@ export class ChatbotService {
         
         if (button_response.body === localisedStrings.morebuttons[0]) {
           await this.message.buttonoptions(from, userData.language);
+          await this.userService.saveButtonResponse(from,this.botId,localisedStrings.morebuttons[0]);
         } else if (button_response.body === localisedStrings.morebuttons[1]) {
           await this.message.sendAskQuestionMessage(from, userData.language);
+          await this.userService.saveButtonResponse(from,this.botId,localisedStrings.morebuttons[1]);
         }
       } else {
         console.log('Response not provided');
