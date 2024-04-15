@@ -45,18 +45,14 @@ export class ChatbotService {
   public async processMessage(body: any): Promise<any> {
     try {
       const { from, text, button_response, persistent_menu_response } = body;
-      console.log(body);
-      
-
       let botID = process.env.BOT_ID;
       let UserData = await this.userService.findUserByMobileNumber(from);
-      
 
+    
       if (!UserData) {
         await this.userService.createUser(from, botID);
       }
       const userData = await this.userService.findUserByMobileNumber(from);
-      console.log(userData);
       const localisedStrings = await LocalizationService.getLocalisedString(
         userData.language,
       );
@@ -86,7 +82,7 @@ export class ChatbotService {
           await this.message.goBackToMainMenu(from, userData.language);
           await this.userService.saveButtonResponse(from,this.botId,localisedStrings.category_list[2])
         } else if(button_response.body === localisedStrings.category_list[3]){
-          console.log("True:---")
+
           await this.askquestion.sendAskQuestionMessage(from, userData.language);
           await this.userService.saveButtonResponse(from,this.botId,localisedStrings.category_list[3])
 
@@ -98,7 +94,6 @@ export class ChatbotService {
       } 
 
       else if(!persistent_menu_response && !button_response && (userData.buttonResponse===localisedStrings.category_list[3] || userData.buttonResponse===localisedStrings.morebuttons[1])){
-        console.log("Ask questions: --")
         await this.userService.updateUsercontext(from,userData.language, body.text.body);
         if(localisedStrings.Questions === body.text.body){
           await this.askquestion.sendAnswer(from, userData.language);
@@ -127,7 +122,6 @@ export class ChatbotService {
         localisedStrings.morebuttons.includes(button_response.body)
       ) {
         if (button_response.body === localisedStrings.morebuttons[0]) {
-          // console.log(userData);
           await this.message.buttonoptions(from, userData.language);
           await this.userService.saveButtonResponse(from,this.botId,localisedStrings.morebuttons[0]);
         } else if (button_response.body === localisedStrings.morebuttons[1]) {
