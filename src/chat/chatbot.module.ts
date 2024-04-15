@@ -9,6 +9,11 @@ import { SwiftchatMessageService } from 'src/swiftchat/swiftchat.service';
 import { MessageService } from 'src/message/message.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/model/user.entity';
+import { aboutcelebrityService } from './aboutcelebrity.service';
+import { socialmediaService } from './socialmedia.service';
+import { reportproblemService } from './reportproblem.serive';
+import { askquestionService } from './askaquestion.service';
+import { latestnewsService } from './latestnews.service';
 
 
 @Module({
@@ -16,6 +21,11 @@ import { User } from 'src/model/user.entity';
   providers: [
     ChatbotService,
     IntentClassifier,
+    aboutcelebrityService,
+    socialmediaService,
+    reportproblemService,
+    askquestionService,
+    latestnewsService,
     UserService,
     {
       provide: MessageService,

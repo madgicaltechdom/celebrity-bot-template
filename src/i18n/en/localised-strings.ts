@@ -1,7 +1,6 @@
 export const localisedStrings = {
-  welcomeMessage: 'Hi Welcome to the Jennifer Lopez ChatBot',
+  welcomeMessage: 'Hi Welcome to the XYZ ChatBot',
   button_option_body: 'What would you like to chat about today?',
-
   seeMoreMessage: 'See More Data',
   language_hindi: 'हिन्दी',
   language_english: 'English',
@@ -38,12 +37,13 @@ export const localisedStrings = {
   ],
   greetings:['hi','hello','hey','hola','namastey'],
   category_list: ['About the Celebrity', 'Latest News and Projects', 'Social Media Links','Ask a question','Report a Problem'],
-  about_celebrity:'Jennifer Lopez, also known by her nickname J.Lo, is an American singer, actress, dancer, and producer. She is one of the most influential Latin artists in the entertainment industry. Lopez gained her first high-profile job as a Fly Girl dancer on the television comedy program In Living Color in 1991.',
-  latest_news:'Jennifer Lopez to Star in New Romantic Comedy Film: Jennifer Lopez has announced that she will star in a new romantic comedy film titled Love in the City. The film is set to begin production later this year and will feature Lopez in the lead role alongside an ensemble cast.',
-  social_media:'instagram- https://www.instagram.com/jlo/',
-  ask_a_question:'Have a question about Jennifer Lopez?Ask away.',
+  about_celebrity:'XYZ is an American singer, actress, dancer, and producer. She is one of the most influential Latin artists in the entertainment industry.',
+  latest_news:'XYZ to Star in New Romantic Comedy Film: XYZ has announcedl to star in a new romantic comedy film titled Love in the City. The film is set to begin production later this year.',
+  social_media:'instagram-',
+  ask_a_question:'Have a question about XYZ ?Ask away.',
   Questions:'What inspired you to pursue a career in entertainment?',
-  Answers:'Jennifer Lopez was inspired to pursue a career in entertainment from a young age.',
+  Answers:'JXYZ was inspired to pursue a career in entertainment from a young age.',
+  noanswer: 'Answer not found',
   report_problem:'Encountering any issues? Let us know by filling out the form',
   back_to_main_menu:['Go Back to Main Mneu'],
   go_back_to_main_menu: [

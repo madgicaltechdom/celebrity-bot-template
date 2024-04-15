@@ -9,7 +9,8 @@ import { SwiftchatMessageService } from 'src/swiftchat/swiftchat.service';
   providers: [
     {
       provide: MessageService,
-      useClass: SwiftchatMessageService, // Provide the WhatsAppMessageService implementation
+      useClass: SwiftchatMessageService,
+       // Provide the WhatsAppMessageService implementation
     },
     CustomException,
   ],

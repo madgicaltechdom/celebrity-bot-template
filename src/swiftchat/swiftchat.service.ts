@@ -36,105 +36,8 @@ export class SwiftchatMessageService extends MessageService {
       requestData,
       this.apiKey,
     );
-    console.log(this.baseUrl)
-    console.log(this.apiKey)
-    console.log(response)
     return response;
   }
-
-  
-  async sendAboutCelebrityMessage(from: string, language: string) {
-    const localisedStrings = LocalizationService.getLocalisedString(language);
-   
-    const requestData = this.prepareRequestData(
-      from,
-      localisedStrings.about_celebrity,
-    );
-
-    const response = await this.sendMessage(
-      this.baseUrl,
-      requestData,
-      this.apiKey,
-    );
-    console.log(this.baseUrl)
-    console.log(this.apiKey)
-    console.log(response)
-    return response;
-  }
-  async sendLatestNewsMessage(from: string, language: string) {
-    const localisedStrings = LocalizationService.getLocalisedString(language);
-   
-    const requestData = this.prepareRequestData(
-      from,
-      localisedStrings.latest_news,
-    );
-
-    const response = await this.sendMessage(
-      this.baseUrl,
-      requestData,
-      this.apiKey,
-    );
-    console.log(this.baseUrl)
-    console.log(this.apiKey)
-    console.log(response)
-    return response;
-  }
-  async sendSocialmediaMessage(from: string, language: string) {
-    const localisedStrings = LocalizationService.getLocalisedString(language);
-   
-    const requestData = this.prepareRequestData(
-      from,
-      localisedStrings.social_media,
-    );
-
-    const response = await this.sendMessage(
-      this.baseUrl,
-      requestData,
-      this.apiKey,
-    );
-    console.log(this.baseUrl)
-    console.log(this.apiKey)
-    console.log(response)
-    return response;
-  }
-
-  async sendAskQuestionMessage(from: string, language: string) {
-    const localisedStrings = LocalizationService.getLocalisedString(language);
-   
-    const requestData = this.prepareRequestData(
-      from,
-      localisedStrings.ask_a_question,
-    );
-
-    const response = await this.sendMessage(
-      this.baseUrl,
-      requestData,
-      this.apiKey,
-    );
-    console.log(this.baseUrl)
-    console.log(this.apiKey)
-    console.log(response)
-    return response;
-  }
-  async sendReportProblemMessage(from: string, language: string) {
-    const localisedStrings = LocalizationService.getLocalisedString(language);
-   
-    const requestData = this.prepareRequestData(
-      from,
-      localisedStrings.report_problem,
-    );
-
-    const response = await this.sendMessage(
-      this.baseUrl,
-      requestData,
-      this.apiKey,
-    );
-    console.log(this.baseUrl)
-    console.log(this.apiKey)
-    console.log(response)
-    return response;
-  }
-
   async sendLanguageChangedMessage(from: string, language: string) {
     const localisedStrings = LocalizationService.getLocalisedString(language);
     const requestData = this.prepareRequestData(
@@ -149,26 +52,10 @@ export class SwiftchatMessageService extends MessageService {
     );
     return response;
   }
-  
-  async sendAnswer(from: string, language: string) {
-    const localisedStrings = LocalizationService.getLocalisedString(language);
-    const requestData = this.prepareRequestData(
-      from,
-      localisedStrings.Answers,
-    );
 
-    const response = await this.sendMessage(
-      this.baseUrl,
-      requestData,
-      this.apiKey,
-    );
-    return response;
-  }
-  
 
   async buttonoptions(from: string, language: string): Promise<void> {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-    const url = `${this.apiUrl}/${this.botId}/messages`;
     const messageData = {
       to: from,
       type: 'button',
@@ -184,7 +71,7 @@ export class SwiftchatMessageService extends MessageService {
       },
     };    
     try {
-      const response = await axios.post(url, messageData, {
+      const response = await axios.post(this.baseUrl, messageData, {
         headers: {
           Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
@@ -198,7 +85,6 @@ export class SwiftchatMessageService extends MessageService {
 
   async languageButtons(from: string, language: string): Promise<void> {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-    const url = `${this.apiUrl}/${this.botId}/messages`;
     const messageData = {
       to: from,
       type: 'button',
@@ -225,7 +111,7 @@ export class SwiftchatMessageService extends MessageService {
       },
     };
     try {
-      const response = await axios.post(url, messageData, {
+      const response = await axios.post(this.baseUrl, messageData, {
         headers: {
           Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
@@ -238,7 +124,6 @@ export class SwiftchatMessageService extends MessageService {
   }
   async goBackToMainMenu(from: string, language: string): Promise<void> {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-    const url = `${this.apiUrl}/${this.botId}/messages`;
     const messageData = {
       to: from,
       type: 'button',
@@ -254,7 +139,7 @@ export class SwiftchatMessageService extends MessageService {
       },
     };
     try {
-      const response = await axios.post(url, messageData, {
+      const response = await axios.post(this.baseUrl, messageData, {
         headers: {
           Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
@@ -267,7 +152,6 @@ export class SwiftchatMessageService extends MessageService {
   };
   async Followupbuttons(from: string, language: string): Promise<void> {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-    const url = `${this.apiUrl}/${this.botId}/messages`;
     const messageData = {
       to: from,
       type: 'button',
@@ -283,7 +167,7 @@ export class SwiftchatMessageService extends MessageService {
       },
     };
     try {
-      const response = await axios.post(url, messageData, {
+      const response = await axios.post(this.baseUrl, messageData, {
         headers: {
           Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',

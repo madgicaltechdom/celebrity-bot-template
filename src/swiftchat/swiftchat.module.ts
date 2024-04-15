@@ -2,7 +2,7 @@
 
 import { Module } from '@nestjs/common';
 import { SwiftchatMessageService } from './swiftchat.service';
-import { MessageModule } from 'src/message/message.module'; // Correct the import path as necessary
+import { MessageModule } from 'src/message/message.module';
 
 @Module({
   imports: [MessageModule], // Import MessageModule
