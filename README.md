@@ -35,7 +35,7 @@ DB_USER=DB_USER
 DB_PASSWORD=DB_PASSWORD
 ```
 # Webhook URL Setup
-news chatbot. Here's a step-by-step guide to get you started smoothly:
+ Here's a step-by-step guide to get you started smoothly:
 
 1. ### Sign up for Ngrok: 
 Begin by accessing this URL and creating an account on Ngrok. Follow the sign-up process diligently to acquire your authorization token.
