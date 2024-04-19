@@ -15,8 +15,6 @@ export class UserService {
     botID: string,
   ): Promise<User> {
     const existingUser = await this.findUserByMobileNumber(mobileNumber);
-    console.log("existingUser",existingUser)
-    console.log(botID)
     if (existingUser) {
       existingUser.mobileNumber=mobileNumber;
       return this.userRepository.save(existingUser);
@@ -27,6 +25,8 @@ export class UserService {
       newUser.botID = botID; 
       newUser.userContext = ''; 
       newUser.buttonResponse = ''; 
+      newUser.name='';
+      newUser.address='',
       newUser.language = 'English'; 
       return this.userRepository.save(newUser);
     }
@@ -54,6 +54,8 @@ export class UserService {
       newUser.userContext = ''; 
       newUser.buttonResponse = buttonResponse;
       newUser.language = 'English'; 
+      newUser.name='';
+      newUser.address='';
       return this.userRepository.save(newUser);
     }
   };
@@ -71,6 +73,8 @@ export class UserService {
       newUser.userContext = user_context; 
       newUser.buttonResponse = null;
       newUser.language = 'English'; 
+      newUser.name='';
+      newUser.address='';
       return this.userRepository.save(newUser);
     }
   };
@@ -88,7 +92,47 @@ export class UserService {
       newUser.userContext = ''; 
       newUser.buttonResponse = '';
       newUser.language = language; 
+      newUser.name='';
+      newUser.address='';
+      return this.userRepository.save(newUser);
+    }
+  };
+
+  async saveName(mobileNumber: string, botID: string,name: string): Promise<User> {
+    const existingUser = await this.findUserByMobileNumber(mobileNumber);
+    if (existingUser) {
+      existingUser.name = name;
+      return this.userRepository.save(existingUser);
+    } else {
+      const newUser = new User();
+      newUser.mobileNumber = mobileNumber;
+      newUser.id = uuidv4(); 
+      newUser.botID = botID; 
+      newUser.userContext = ''; 
+      newUser.buttonResponse = '';
+      newUser.language = 'English'; 
+      newUser.name= name;
+      newUser.address='';
+      return this.userRepository.save(newUser);
+    }
+  };
+  async saveAddress(mobileNumber: string, botID: string,address: string): Promise<User> {
+    const existingUser = await this.findUserByMobileNumber(mobileNumber);
+    if (existingUser) {
+      existingUser.address = address;
+      return this.userRepository.save(existingUser);
+    } else {
+      const newUser = new User();
+      newUser.mobileNumber = mobileNumber;
+      newUser.id = uuidv4(); 
+      newUser.botID = botID; 
+      newUser.userContext = ''; 
+      newUser.buttonResponse = '';
+      newUser.language = 'English'; 
+      newUser.name= '';
+      newUser.address=address;
       return this.userRepository.save(newUser);
     }
   };
 }
+

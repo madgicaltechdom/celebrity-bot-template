@@ -8,6 +8,12 @@ export class User {
   @Column({ name: 'mobileNumber', length: 255 })
   mobileNumber: string;
 
+  @Column({ name: 'name', length: 255 })
+ name: string;
+
+  @Column({ name: 'address', length: 255 })
+  address: string;
+
   @Column({ name: 'botID', length: 255 })
   botID: string;
 

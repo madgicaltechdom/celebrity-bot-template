@@ -44,8 +44,12 @@ export const localisedStrings = {
   Questions:'What inspired you to pursue a career in entertainment?',
   Answers:'JXYZ was inspired to pursue a career in entertainment from a young age.',
   noanswer: 'Answer not found',
-  report_problem:'Encountering any issues? Let us know by filling out the form',
+  namemessage:'Enter Your Name',
+  addressmessage:'Enter Your Address',
+  thankyoumessage:"Thank you for raising the issue. Your feedback is valuable to us!",
+  report_problem:"What's the issue you are facing? Please feel free to type it here. We're here to help! 🌟",
   back_to_main_menu:['Go Back to Main Mneu'],
+  context:['about','news','social media','question','name','address','issue','language'],
   go_back_to_main_menu: [
     {
       type: 'solid',

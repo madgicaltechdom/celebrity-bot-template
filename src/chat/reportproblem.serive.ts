@@ -36,6 +36,36 @@ export class reportproblemService {
       throw new CustomException(error);
     }
   }
+  async sendAskNameMessage(from: string, language: string) {
+    const localisedStrings = LocalizationService.getLocalisedString(language);
+   
+    const requestData = this.prepareRequestData(
+      from,
+      localisedStrings.namemessage,
+    );
+
+    const response = await this.sendMessage(
+      this.baseUrl,
+      requestData,
+      this.apiKey,
+    );
+    return response;
+  }
+  async sendAskAddressMessage(from: string, language: string) {
+    const localisedStrings = LocalizationService.getLocalisedString(language);
+   
+    const requestData = this.prepareRequestData(
+      from,
+      localisedStrings.addressmessage,
+    );
+
+    const response = await this.sendMessage(
+      this.baseUrl,
+      requestData,
+      this.apiKey,
+    );
+    return response;
+  }
   async sendReportProblemMessage(from: string, language: string) {
     const localisedStrings = LocalizationService.getLocalisedString(language);
    
@@ -44,6 +74,20 @@ export class reportproblemService {
       localisedStrings.report_problem,
     );
 
+    const response = await this.sendMessage(
+      this.baseUrl,
+      requestData,
+      this.apiKey,
+    );
+    return response;
+  }
+  async sendThankyouessage(from: string, language: string) {
+    const localisedStrings = LocalizationService.getLocalisedString(language);
+   
+    const requestData = this.prepareRequestData(
+      from,
+      localisedStrings.thankyoumessage,
+    );
     const response = await this.sendMessage(
       this.baseUrl,
       requestData,

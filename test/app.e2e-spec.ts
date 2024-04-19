@@ -72,6 +72,8 @@ describe('AppController', () => {
       botID: '0238981860238953',
       userContext: '',
       buttonResponse: '',
+      name:'',
+      address:'',
       language: 'English',
     });
 
@@ -100,6 +102,8 @@ describe('AppController', () => {
       mobileNumber: '1234567890',
       botID: '0238981860238953',
       userContext: '',
+      name:'',
+      address:'',
       buttonResponse: '',
       language: 'English',
     });
@@ -126,6 +130,8 @@ describe('AppController', () => {
       mobileNumber: '1234567890',
       botID: '0238981860238953',
       userContext: '',
+      name:'',
+      address:'',
       buttonResponse: '',
       language: 'English',
     });
@@ -142,6 +148,8 @@ describe('AppController', () => {
       mobileNumber: '1234567890',
       botID: '0238981860238953',
       userContext: '',
+      name:'',
+      address:'',
       buttonResponse: '',
       language: 'English',
     });
@@ -151,6 +159,8 @@ describe('AppController', () => {
       mobileNumber: '1234567890',
       botID: '0238981860238953',
       userContext: '',
+      name:'',
+      address:'',
       buttonResponse: '',
       language: 'English',
     });
@@ -197,6 +207,8 @@ describe('AppController', () => {
         mobileNumber: '1234567890',
         botID: '0238981860238953',
         userContext: '',
+        name:'',
+        address:'',
         buttonResponse: '',
         language: 'English',
       });
@@ -212,6 +224,8 @@ describe('AppController', () => {
         mobileNumber: '1234567890',
         botID: '0238981860238953',
         userContext: '',
+        name:'',
+        address:'',
         buttonResponse: '',
         language: 'English',
       });
@@ -221,6 +235,8 @@ describe('AppController', () => {
         mobileNumber: '1234567890',
         botID: '0238981860238953',
         userContext: '',
+        name:'',
+        address:'',
         buttonResponse: '',
         language: 'English',
       });
@@ -269,6 +285,8 @@ describe('AppController', () => {
           mobileNumber: '1234567890',
           botID: '0238981860238953',
           userContext: '',
+          name:'',
+          address:'',
           buttonResponse: '',
           language: 'English',
         });
@@ -286,6 +304,8 @@ describe('AppController', () => {
           botID: '0238981860238953',
           userContext: '',
           buttonResponse: '',
+          name:'',
+          address:'',
           language: 'English',
         });
     
@@ -295,6 +315,8 @@ describe('AppController', () => {
           botID: '0238981860238953',
           userContext: '',
           buttonResponse: '',
+          name:'',
+          address:'',
           language: 'English',
         });
     
@@ -341,6 +363,8 @@ describe('AppController', () => {
               botID: '0238981860238953',
               userContext: '',
               buttonResponse: '',
+              name:'',
+              address:'',
               language: 'English',
             });
             jest.spyOn(userService.userRepository, 'findOne').mockResolvedValue({
@@ -348,6 +372,8 @@ describe('AppController', () => {
               mobileNumber: '1234567890',
               botID: '0238981860238953',
               userContext: '',
+              name:'',
+              address:'',
               buttonResponse: '',
               language: 'English',
             });
@@ -363,6 +389,8 @@ describe('AppController', () => {
               mobileNumber: '1234567890',
               botID: '0238981860238953',
               userContext: '',
+              name:'',
+              address:'',
               buttonResponse: '',
               language: 'English',
             });
@@ -404,6 +432,8 @@ describe('AppController', () => {
               mobileNumber: '1234567890',
               botID: '0238981860238953',
               userContext: '',
+              name:'',
+              address:'',
               buttonResponse: '',
               language: 'English',
             });
@@ -413,6 +443,8 @@ describe('AppController', () => {
               botID: '0238981860238953',
               userContext: '',
               buttonResponse: '',
+              name:'',
+              address:'',
               language: 'English',
             });
         
@@ -427,6 +459,8 @@ describe('AppController', () => {
               mobileNumber: '1234567890',
               botID: '0238981860238953',
               userContext: '',
+              name:'',
+              address:'',
               buttonResponse: '',
               language: 'English',
             });
@@ -468,6 +502,8 @@ describe('AppController', () => {
                 mobileNumber: '1234567890',
                 botID: '0238981860238953',
                 userContext: '',
+                name:'',
+                address:'',
                 buttonResponse: '',
                 language: 'English',
               });
@@ -484,6 +520,8 @@ describe('AppController', () => {
                 mobileNumber: '1234567890',
                 botID: '0238981860238953',
                 userContext: '',
+                name:'',
+                address:'',
                 buttonResponse: '',
                 language: 'English',
               });
@@ -493,6 +531,8 @@ describe('AppController', () => {
                 mobileNumber: '1234567890',
                 botID: '0238981860238953',
                 userContext: '',
+                name:'',
+                address:'',
                 buttonResponse: '',
                 language: 'English',
               });
@@ -527,6 +567,8 @@ describe('AppController', () => {
                   mobileNumber: '1234567890',
                   botID: '0238981860238953',
                   userContext: '',
+                  name:'',
+                  address:'',
                   buttonResponse: '',
                   language: 'English',
                 });
@@ -543,6 +585,8 @@ describe('AppController', () => {
                   mobileNumber: '1234567890',
                   botID: '0238981860238953',
                   userContext: '',
+                  name:'',
+                  address:'',
                   buttonResponse: '',
                   language: 'English',
                 });
@@ -552,6 +596,8 @@ describe('AppController', () => {
                   mobileNumber: '1234567890',
                   botID: '0238981860238953',
                   userContext: '',
+                  name:'',
+                  address:'',
                   buttonResponse: '',
                   language: 'English',
                 });
@@ -583,17 +629,4 @@ describe('AppController', () => {
                   );
                   
                 });
-
-
-
-    
-
-      
-  
-
-
-  
-
-  
-
 });
