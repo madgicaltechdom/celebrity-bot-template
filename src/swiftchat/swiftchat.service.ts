@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
+import axios from 'axios';
 import * as dotenv from 'dotenv';
-import { LocalizationService } from 'src/localization/localization.service';
-import { MessageService } from 'src/message/message.service';
+import { LocalizationService } from '../localization/localization.service';
+import { MessageService } from '../message/message.service';
 
 dotenv.config();
 
@@ -21,8 +22,10 @@ export class SwiftchatMessageService extends MessageService {
       },
     };
   }
+
   async sendWelcomeMessage(from: string, language: string) {
     const localisedStrings = LocalizationService.getLocalisedString(language);
+  
     const requestData = this.prepareRequestData(
       from,
       localisedStrings.welcomeMessage,
@@ -35,7 +38,6 @@ export class SwiftchatMessageService extends MessageService {
     );
     return response;
   }
-
   async sendLanguageChangedMessage(from: string, language: string) {
     const localisedStrings = LocalizationService.getLocalisedString(language);
     const requestData = this.prepareRequestData(
@@ -50,4 +52,135 @@ export class SwiftchatMessageService extends MessageService {
     );
     return response;
   }
+
+
+  async buttonoptions(from: string, language: string): Promise<void> {
+    const localisedStrings = LocalizationService.getLocalisedString(language);
+    const messageData = {
+      to: from,
+      type: 'button',
+      button: {
+        body: {
+          type: 'text',
+          text: {
+            body: localisedStrings.button_option_body,
+          },
+        },
+        buttons: localisedStrings.button_options,
+        allow_custom_response: false,
+      },
+    };    
+    try {
+      const response = await axios.post(this.baseUrl, messageData, {
+        headers: {
+          Authorization: `Bearer ${this.apiKey}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('errors:', error);
+    }
+  }
+
+  async languageButtons(from: string, language: string): Promise<void> {
+    const localisedStrings = LocalizationService.getLocalisedString(language);
+    const messageData = {
+      to: from,
+      type: 'button',
+      button: {
+        body: {
+          type: 'text',
+          text: {
+            body: localisedStrings.languageBody,
+          },
+        },
+        buttons: [
+          {
+            type: 'solid',
+            body: 'Hindi',
+            reply: 'Hindi',
+          },
+          {
+            type: 'solid',
+            body: 'English',
+            reply: 'English',
+          },
+        ],
+        allow_custom_response: false,
+      },
+    };
+    try {
+      const response = await axios.post(this.baseUrl, messageData, {
+        headers: {
+          Authorization: `Bearer ${this.apiKey}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('errors:', error);
+    }
+  }
+  async goBackToMainMenu(from: string, language: string): Promise<void> {
+    const localisedStrings = LocalizationService.getLocalisedString(language);
+    const messageData = {
+      to: from,
+      type: 'button',
+      button: {
+        body: {
+          type: 'text',
+          text: {
+            body: localisedStrings.backMainMenuMessage,
+          },
+        },
+        buttons: localisedStrings.go_back_to_main_menu,
+        allow_custom_response: false,
+      },
+    };
+    try {
+      const response = await axios.post(this.baseUrl, messageData, {
+        headers: {
+          Authorization: `Bearer ${this.apiKey}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('errors:', error);
+    }
+  };
+  async Followupbuttons(from: string, language: string): Promise<void> {
+    const localisedStrings = LocalizationService.getLocalisedString(language);
+    const messageData = {
+      to: from,
+      type: 'button',
+      button: {
+        body: {
+          type: 'text',
+          text: {
+            body: localisedStrings.backMainewAskMessage,
+          },
+        },
+        buttons: localisedStrings.mainmenu_ask_a_new_question,
+        allow_custom_response: false,
+      },
+    };
+    try {
+      const response = await axios.post(this.baseUrl, messageData, {
+        headers: {
+          Authorization: `Bearer ${this.apiKey}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('errors:', error);
+    }
+  };
+
+  
+  
+
+    
 }

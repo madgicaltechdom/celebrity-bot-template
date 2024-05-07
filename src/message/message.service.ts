@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
-import { CustomException } from 'src/common/exception/custom.exception';
-import { localisedStrings } from 'src/i18n/en/localised-strings';
+import { CustomException } from '../common/exception/custom.exception';
+import { localisedStrings } from '../i18n/en/localised-strings';
 
 @Injectable()
 export abstract class MessageService {
@@ -28,4 +28,9 @@ export abstract class MessageService {
 
   abstract sendWelcomeMessage(from: string, language: string);
   abstract sendLanguageChangedMessage(from: string, language: string);
+  abstract buttonoptions(from:string, language:string);
+  abstract goBackToMainMenu(from: string, language: string);
+  abstract languageButtons(from: string, language: string);
+  abstract Followupbuttons(from: string, language: string);
+  
 }
