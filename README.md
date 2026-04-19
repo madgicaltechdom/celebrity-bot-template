@@ -1,5 +1,11 @@
 #  Chatbot NestJS Boilerplate
 
+**Hook:** Celebrity chatbots require personality configuration — boilerplate every time.
+
+**Body:** Template for celebrity/famous-person chatbots.
+
+**Closer:** Persona chatbots — configure and deploy.
+
 In this comprehensive guide, we introduce you to our Chatbot Starter Kit, a resource designed to empower developers in building robust chatbot applications. Whether you are just starting your journey in chatbot development or are an experienced developer seeking an efficient solution, this document is your go-to resource for mastering the use of our starter kit.
 
 
